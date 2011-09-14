@@ -10,6 +10,7 @@ public class MyGMLMapping extends GMLMapping {
 	}
 
 	protected Document extendField(String rootDir, String currentDir, Document doc){
+		//add your own code here
 		
 		return doc;
 	}
