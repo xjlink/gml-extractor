@@ -1,7 +1,6 @@
 package example;
 
 
-import cn.bupt.gml.extract.DirHandler;
 
 public class DirExtractExample {
 
@@ -14,12 +13,8 @@ public class DirExtractExample {
 	public static void main(String[] args) {
 		
 		MyGMLMapping mapping = new MyGMLMapping("D:/example-mapping.xml");
-		DirHandler handler = new DirHandler(mapping);
-		
-		long start_time = java.util.Calendar.getInstance().getTimeInMillis();
+		MyDirHandler handler = new MyDirHandler(mapping);
 		handler.scan("D:/test-dir");
-		System.out.println("finish time ========="+ String.valueOf(java.util.Calendar.getInstance().getTimeInMillis()- start_time) + "ms");
-
 	}
 	
 	
