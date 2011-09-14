@@ -13,7 +13,7 @@ public class DirExtractExample {
 	
 	public static void main(String[] args) {
 		
-		MyGMLMapping mapping = new MyGMLMapping("d:/example-mapping.xml");
+		MyGMLMapping mapping = new MyGMLMapping("D:/example-mapping.xml");
 		DirHandler handler = new DirHandler(mapping);
 		
 		long start_time = java.util.Calendar.getInstance().getTimeInMillis();
