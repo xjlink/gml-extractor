@@ -60,11 +60,10 @@ public class DirHandler {
 	
 	private void scanOneFile(File file){
 		if (file.getName().endsWith(postfix)) {
-			System.out.println("Scaning......"	+ file.getAbsolutePath() + ", total files:"+ file_count);
+			System.out.println("Scaning......"	+ file.getAbsolutePath() + ", total files:"+ (++file_count));
 			mapping.parse(file);
 			buffer = mapping.getDocList();
 			if(buffer.size()>0){
-				file_count++;
 				record_count += buffer.size();
 				onFileOver(file);
 			}
