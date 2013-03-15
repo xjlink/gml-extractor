@@ -3,6 +3,7 @@ package cn.bupt.gml.extract;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.*;
 
@@ -92,6 +93,82 @@ public class GMLMapping extends GMLReader {
 		docList = new ArrayList<Document>();
 		try {
 			super.parse(url.openStream(), encoding);
+		} catch (Exception e){
+			e.printStackTrace();
+			if(fw!=null){
+				parseException(_root_dir,_gml_path,e);
+			}
+		}
+	}
+	
+	public void parse(byte[] bytes){	
+		_gml_path = "/";
+		_current_dir = "/";
+		_xpath = new StringBuffer();
+		appending = false;	tag = false;
+		_entity_buffer = new StringBuffer();
+		_combine_buffer = new StringBuffer();
+		_combine_counter = 0;
+		docList = new ArrayList<Document>();
+		try {
+			super.parse(bytes);
+		} catch (Exception e){
+			e.printStackTrace();
+			if(fw!=null){
+				parseException(_root_dir,_gml_path,e);
+			}
+		}
+	}
+	
+	public void parse(byte[] bytes, String encoding){	
+		_gml_path = "/";
+		_current_dir = "/";
+		_xpath = new StringBuffer();
+		appending = false;	tag = false;
+		_entity_buffer = new StringBuffer();
+		_combine_buffer = new StringBuffer();
+		_combine_counter = 0;
+		docList = new ArrayList<Document>();
+		try {
+			super.parse(bytes, encoding);
+		} catch (Exception e){
+			e.printStackTrace();
+			if(fw!=null){
+				parseException(_root_dir,_gml_path,e);
+			}
+		}
+	}
+	
+	public void parse(InputStream inputStream){	
+		_gml_path = "/";
+		_current_dir = "/";
+		_xpath = new StringBuffer();
+		appending = false;	tag = false;
+		_entity_buffer = new StringBuffer();
+		_combine_buffer = new StringBuffer();
+		_combine_counter = 0;
+		docList = new ArrayList<Document>();
+		try {
+			super.parse(inputStream);
+		} catch (Exception e){
+			e.printStackTrace();
+			if(fw!=null){
+				parseException(_root_dir,_gml_path,e);
+			}
+		}
+	}
+	
+	public void parse(InputStream inputStream, String encoding){	
+		_gml_path = "/";
+		_current_dir = "/";
+		_xpath = new StringBuffer();
+		appending = false;	tag = false;
+		_entity_buffer = new StringBuffer();
+		_combine_buffer = new StringBuffer();
+		_combine_counter = 0;
+		docList = new ArrayList<Document>();
+		try {
+			super.parse(inputStream, encoding);
 		} catch (Exception e){
 			e.printStackTrace();
 			if(fw!=null){
