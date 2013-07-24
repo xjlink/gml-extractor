@@ -81,6 +81,9 @@ public class GMLReader {
                 				}
                 			}
                 			startElement(qName,attr);
+                			if(_buf.charAt(_buf.length()-1)=='/'){
+                				endElement(qName);
+                			}
                 		}
                 	}
                 	_pre = _cur;
