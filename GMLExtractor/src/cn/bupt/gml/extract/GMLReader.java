@@ -69,6 +69,7 @@ public class GMLReader {
                 		if(_buf.charAt(0)=='/'){
                 			endElement(_buf.deleteCharAt(0).toString());
                 		}else{
+                			/*
                 			String[] strs = _buf.toString().split(" ");
                 			String qName = strs[0];
                 			Map<String,String> attr = new HashMap<String,String>();
@@ -79,7 +80,9 @@ public class GMLReader {
                 						attr.put(pair[0], pair[1].replaceAll("\"", "").replaceAll("'", ""));
                 					}
                 				}
-                			}
+                			}*/
+                			String qName = _buf.toString().split(" ")[0];
+                			Map<String,String> attr = TString.snatch_attribute(_buf.toString());
                 			startElement(qName,attr);
                 			if(_buf.charAt(_buf.length()-1)=='/'){
                 				endElement(qName);

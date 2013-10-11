@@ -1,6 +1,9 @@
 
 package cn.bupt.gml.extract;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
  * @author xie
@@ -107,6 +110,44 @@ public class TString extends Object{
 			OutputString = "";
 		}
 		return OutputString;
+	}
+	
+	public static final Map<String,String> snatch_attribute(String InputString){
+		Map<String,String> attrMap = new HashMap<String,String>();
+		if(InputString!=null && !InputString.isEmpty()){
+			StringBuffer _buf = new StringBuffer();
+			boolean keylock = false , valuelock = false;
+			String key = null, value = null;
+			for(int i=0;i<InputString.length();i++){
+				char c = InputString.charAt(i);
+				if(c=='='){
+					if(!keylock){
+						key = _buf.toString();
+						keylock = true;
+					}
+					_buf.delete(0, _buf.length());
+				}else if(c=='"'){
+					if(!valuelock){
+						valuelock=true;
+					}else{
+						value = _buf.toString();
+						attrMap.put(key, value);
+						keylock = false;
+						valuelock = false;
+						_buf.delete(0, _buf.length());
+					}
+				}else if(c==' '){
+					if(!keylock || !valuelock){
+						_buf.delete(0, _buf.length());
+					}else{
+						_buf.append(c);
+					}
+				}else{
+					_buf.append(c);
+				}
+			}
+		}
+		return attrMap;
 	}
 	
 }
